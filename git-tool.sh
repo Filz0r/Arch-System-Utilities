@@ -58,7 +58,7 @@ system_install() {
     yay -S --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --noremovemake polybar \
         polybar-spotify-module optimus-manager-git plymouth-git gruvbox-material-icon-theme-git \
         gruvbox-material-gtk-theme-git gruvbox-dark-icons-gtk gruvbox-dark-gtk mangohud gamemode \
-        cpupower-gui i3exit picom-jonaburg-git otf-nerd-fonts-fira-mono timeshift goverlay
+        cpupower-gui i3exit picom-jonaburg-git otf-nerd-fonts-fira-mono goverlay blesh
 }
 
 app_install() {
