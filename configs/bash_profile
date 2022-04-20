@@ -1,0 +1,44 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+
+#nvidia_check=$(lsmod | grep nvidia | wc -l)
+#case $nvidia_check in
+#    0)
+#        GPU_MODE=integrated
+#        ;;
+#    4)  
+#        GPU_MODE=nvidia
+#        ;;
+#esac
+#export GPU_MODE
+#
+#NVIDIA_MODE=$(/home/filipe/scripts/prime_tool.sh startup-check)
+#export NVIDIA_MODE
+#sleep 1
+#~/scripts/prime_tool.sh startup
+#sleep 1
+
+
+
+#if [ -z "$DISPLAY" ] && [ $(tty) == /dev/tty1 ]; then
+#  case $GPU_MODE in
+#    nvidia)
+#      startx
+#      bash -c '__GL_GSYNC_ALLOWED=0; __GL_VRR_ALLOWED=0; WLR_DRM_NO_ATOMIC=1; export QT_AUTO_SCREEN_SCALE_FACTOR=1; export QT_QPA_PLATFORM=wayland; export QT_WAYLAND_DISABLE_WINDOWDECORATION=1; export GDK_BACKEND=wayland; export XDG_CURRENT_DESKTOP=sway; export GBM_BACKEND=nvidia-drm; export __GLX_VENDOR_LIBRARY_NAME=nvidia; export MOZ_ENABLE_WAYLAND=1; export WLR_NO_HARDWARE_CURSORS=1;WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0  sway --unsupported-gpu'
+#      ;;
+#    integrated)
+#      sway
+      #startx
+#      ;;
+#  esac
+#fi
+
+#startx
+if [ -z "$DISPLAY" ] && [ $(tty) == /dev/tty1 ]; then
+    startx
+fi
+#/usr/bin/prime-offload

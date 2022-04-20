@@ -1,0 +1,55 @@
+# -*- mode: sh;  -*-
+## Checks if reboot is needed
+alias cr='cat /var/run/reboot-required'
+## Remove Orphan pkgs
+alias orphan='sudo pacman -Rns $(pacman -Qtdq)'
+alias p='pwd'
+alias follow='tail -f -- "$(latest-file-in-directory)"'
+alias pub='curl ifconfig.me'
+alias cdc='cd /home/filipe/code'
+alias nv14='nvm use --lts=fermium'
+alias ni14='nvm install --lts=fermium'
+alias nv12='nvm use --lts=erbium'
+alias ni12='nvm install --lts=erbium'
+alias ..='cd ..'
+alias grep='grep --color=auto -i'
+alias ls='ls --color=auto'
+alias la='ls -A'
+alias l='ls -CF'
+alias ll='ls -alF'
+alias pac='sudo pacman'
+alias ss='sudo systemctl'
+alias wg='sudo wg'
+alias wg-quick='sudo wg-quick'
+alias code='vscodium'
+alias icat="kitty +kitten icat"
+alias ls='ls --color=auto'
+alias remacs='/home/filipe/.emacs.d/bin/doom sync'
+alias g='goto'
+alias s='source'
+alias rcs="source ~/.bashrc"
+alias mp="ncmpcpp"
+#alias confbak="/home/filipe/github/mySettings/backup.sh"
+alias v="vim"
+alias sv="sudo vim"
+alias va="vim $HOME/scripts/aliases"
+alias vb="vim $HOME/.bashrc"
+#alias ht="clip $HOME/.hubtoken"
+#alias tt="clip $HOME/.teatoken"
+alias emacs="emacsclient -c -a 'emacs'"
+alias vw="vim $HOME/vimwiki/index.wiki"
+#alias steam='STEAM_RUNTIME_HEAVY=1 prime-run steam'
+alias garbage="systemctl reboot --boot-loader-entry=spyware.conf"
+#alias nanominer='cd ~/.mySettings/nanominer/; ./nanominer config.ini'
+#alias dotbak='rclone copy --filter-from /home/filipe/.mySettings/filter.txt /home/filipe/drive-settings/ Drive:Manjaro --copy-links --log-level INFO --log-file=/home/filipe/.mySettings/logs/rclone/log-config-$(date "+%Y.%m.%d-%H.%M.%S").log'
+#alias devbak='rclone copy /home/filipe/Documents/code Drive:Code --copy-links --log-level INFO --log-file=/home/filipe/.mySettings/logs/rclone/log-code-$(date "+%Y.%m.%d-%H.%M.%S").log'
+#alias cds='cd /home/filipe/drive-settings'
+##
+## cd to the ansible folder
+#alias cda='cd /home/filipe/Documents/server-stuff/Ansible'
+##
+## nano hosts file
+#alias nh='nano /home/filipe/.mySettings/hosts'
+
+
+# vim:ft=sh

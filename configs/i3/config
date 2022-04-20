@@ -1,0 +1,232 @@
+### CONFIG
+# set the mod key
+set $mod Mod4
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# Disable titlebars / gaps
+for_window [class=".*"] border pixel 2
+gaps inner 10
+gaps outer 10
+# class                 border  backgr. text    indicator child_border
+client.focused          #98971a #222222 #222222 #98971a   #98971a 
+client.focused_inactive #98971a #222222 #222222 #98971a   #98971a
+client.unfocused        #fbf1c7 #222222 #222222 #fbf1c7   #fbf1c7
+client.urgent           #d79921 #222222 #222222 #d79921   #d79921
+client.placeholder      #98971a #222222 #222222 #98971a   #98971a
+
+client.background       #ffffff
+# because of polybar
+gaps top 25
+# font
+font pango: Fira Mono 10, Font Awesome 5 Free 7
+
+## AUTOSTART
+# at launch
+exec --no-startup-id /usr/bin/prime-offload
+exec --no-startup-id ~/.asu/sys-tool.sh "i3_init"
+
+# when restarted
+exec_always ~/.asu/sys-tool.sh "xswap"
+exec_always --no-startup-id autotiling
+
+###KEYBIDINGS
+## Special keys
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+# Media player controls
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
+
+## ACTIONS
+## APPS
+## BPYTOP
+bindsym $mod+Shift+m exec "kitty bpytop"
+## NVIDIA SMI
+bindsym $mod+Shift+g exec "kitty nvtop"
+## SENSORS
+bindsym $mod+Shift+t exec "kitty watch -n 1 sensors"
+## EMACS
+bindsym $mod+e exec "emacs"
+## FIREFOX
+bindsym $mod+Shift+b exec "firefox"
+## FILES
+bindsym $mod+Shift+f exec "nautilus"
+## TERMINAL
+bindsym $mod+Return exec kitty
+## APP LAUNCHER
+bindsym $mod+space exec --no-startup-id rofi -show drun -show-icons -theme /home/filipe/.asu/configs/themes/rofi-theme.rasi
+## CONFIG
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Moving workspaces between screens
+bindsym $mod+p move workspace to output right
+bindsym $mod+Shift+p move workspace to output left
+# Make the currently focused window a scratchpad
+bindsym $mod+n move scratchpad
+# Show the first scratchpad window
+bindsym $mod+Shift+n scratchpad show
+# split in horizontal orientation
+bindsym $mod+c split h
+# split in vertical orientation
+bindsym $mod+v split v
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# focus the child container
+bindsym $mod+d focus child
+# kill focused window
+bindsym $mod+q kill
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+## MODE BINDINGS
+bindsym $mod+r mode "resize"
+bindsym $mod+x mode $displayMode
+bindsym $mod+Escape mode "$mode_system"
+
+## RESIZING WITH VIM AND ARROW KEYS
+# modes are stupid for these things
+bindsym $mod+Control+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+l resize grow width 10 px or 10 ppt
+bindsym $mod+Control+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+k resize grow height 10 px or 10 ppt
+bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
+
+
+### WORKSPACES
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+### MODES
+## MODE CONFIGS
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+# change monitor layouts
+set $displayMode "Set display mode [w]ork [l]aptop [p]rojector [m]edia [t]all"
+mode $displayMode {
+    bindsym w exec "~/scripts/screen/triple_monitor_wide.sh"; mode "default"
+    bindsym t exec "~/scripts/screen/triple_monitor.sh"; mode "default"
+    bindsym l exec "~/scripts/screen/laptop_mode.sh"; mode "default"
+    bindsym p exec "~/scripts/screen/presentation_mode.sh"; mode "default"
+    bindsym m exec "~/scripts/screen/media_mode.sh"; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Power/User Menu (depends on the i3lock script in the AUR)
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+### RULES
+# assign all windows to correct workspaces
+assign [class="Spotify"] $ws5
+assign [class="Emacs"] $ws3
+assign [class="discord"] $ws6
+assign [class="firefox"] $ws2
+assign [class="Nautilus"] $ws4
+assign [class="Steam"] $ws7
+assign [class="Evolution"] $ws9
+# move windows from these classes to correct workspaces
+for_window [class="Spotify"] move to workspace $ws5
+for_window [class="GitHub Desktop"] move to workspace $ws8
+for_window [class="VSCodium"] move to workspace $ws3
+# Floating windows
+for_window [instance="pamac-manager" class="Pamac-manager"] floating enable
+for_window [instance="pavucontrol" class="Pavucontrol"] floating enable
+for_window [instance="transmission-remote-gtk" class="Transmission-remote-gtk"] floating enable
+for_window [instance="mongodb compass" class="MongoDB Compass"] floating enable
+for_window [instance="nvidia-settings" class="Nvidia-settings"] floating enable
+for_window [instance="blueman-manager" class="Blueman-manager"] floating enable
+for_window [instance="gnome-disks" class="Gnome-disks"] floating enable
+for_window [instance="origin.exe"] floating enable
+for_window [instance="com.github.alainm23.planner" class="Com.github.alainm23.planner"] floating enable
+for_window [instance="yad" class="Yad"] floating enable
+

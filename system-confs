@@ -1,0 +1,5 @@
+/etc/optimus-manager/optimus-manager.conf
+/etc/optimus-manager/xsetup-hybrid.sh
+/etc/optimus-manager/xsetup-nvidia.sh
+/etc/optimus-manager/xsetup-integrated.sh
+/etc/plymouth/plymouthd.conf

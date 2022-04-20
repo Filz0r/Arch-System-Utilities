@@ -1,0 +1,17 @@
+syntax on
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set nowrap
+set smartindent
+set nu
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set guicursor=
+set signcolumn=yes
