@@ -31,12 +31,13 @@ BASHRC="$SOURCE_PATH/configs/bashrc"
 BASH_LOGOUT="$SOURCE_PATH/configs/bash_logout"
 BASH_PROFILE="$SOURCE_PATH/configs/bash_profile"
 ENVIROMENT_PATH="$SOURCE_PATH/configs/environment"
+DOOM_PATH="$SOURCE_PATH/configs/doom"
 #USER_DIRS="$SOURCE_PATH/configs/user-dirs.dirs"
 #USER_LOCALE="$SOURCE_PATH/configs/user-dirs.locale"
 VIMRC="$SOURCE_PATH/configs/vimrc"
 GTKRC="$SOURCE_PATH/configs/gtkrc"
 XINITRC="$SOURCE_PATH/configs/xinitrc"
-
+if [[ ! -d "$DOOM_PATH" ]]; then mkdir "$DOOM_PATH"; fi
 
 system_install() {
    sudo pacman -Sy --needed --noconfirm xorg nitrogen bash-completion yad arandr xorg-xrandr w3m \
@@ -85,6 +86,7 @@ config_install() {
     cp "$XINITRC" "$HOME"/.xinitrc
     cp "$VIMRC" "$HOME"/.vimrc
     cp "$GTKRC" "$HOME"/.gtkrc-2.0
+    cp -a "$DOOM_PATH/." "$HOME"/.doom.d 
     conf_install_func "$USER_CONFS"
 }
 
@@ -95,6 +97,7 @@ config_backup() {
     cp "$HOME"/.xinitrc "$XINITRC"
     cp "$HOME"/.vimrc "$VIMRC"
     cp "$HOME"/.gtkrc-2.0 "$GTKRC"
+    cp "$HOME"/.doom.d/* "$DOOM_PATH"
     #cp "$HOME/.config/user-dirs.dirs" "$USER_DIRS"
     #cp "$HOME/.config/user-dirs.locale" "$USER_LOCALE"
     conf_backup_func "$USER_CONFS"
