@@ -130,7 +130,7 @@ app_launch() {
     bitwarden-desktop & disown
     kdeconnect-indicator & disown
     dunst & disown
-    /usr/bin/emacs --daemon & disown
+    /usr/bin/emacs --daemon --with-x-toolkit=lucid & disown
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown
     redshift-gtk -l 38.61667:-9.08333 & disown
     flameshot & disown
