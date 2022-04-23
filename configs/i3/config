@@ -20,15 +20,6 @@ gaps top 25
 # font
 font pango: Fira Mono 10, Font Awesome 5 Free 7
 
-## AUTOSTART
-# at launch
-exec --no-startup-id /usr/bin/prime-offload
-exec --no-startup-id ~/.asu/sys-tool.sh "i3_init"
-
-# when restarted
-exec_always ~/.asu/sys-tool.sh "xswap"
-exec_always --no-startup-id autotiling
-
 ###KEYBIDINGS
 ## Special keys
 # Use pactl to adjust volume in PulseAudio.
@@ -229,4 +220,13 @@ for_window [instance="gnome-disks" class="Gnome-disks"] floating enable
 for_window [instance="origin.exe"] floating enable
 for_window [instance="com.github.alainm23.planner" class="Com.github.alainm23.planner"] floating enable
 for_window [instance="yad" class="Yad"] floating enable
+## AUTOSTART
+# at launch
+exec --no-startup-id /usr/bin/prime-offload
+exec --no-startup-id ~/.asu/sys-tool.sh i3_init
+
+# when restarted
+exec_always ~/.asu/sys-tool.sh "xswap"
+exec_always --no-startup-id autotiling
+
 

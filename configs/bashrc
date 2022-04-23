@@ -19,9 +19,9 @@ HISTSIZE=100000
 
 
 source /usr/share/nvm/init-nvm.sh
-source $HOME/scripts/aliases
-source $HOME/scripts/goto.sh
-source $HOME/scripts/clip.sh
+source $HOME/.asu/aliases
+#source $HOME/.asu/scripts/goto.sh
+source $HOME/.asu/scripts/clip.sh
 source /usr/share/doc/pkgfile/command-not-found.bash
 
 # BEGIN_KITTY_SHELL_INTEGRATION
