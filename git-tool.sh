@@ -48,13 +48,14 @@ system_install() {
         nvidia-settings nvtop opencl-nvidia cuda bbswitch-dkms i3-gaps bluez bluez-utils \
         lxappearance ttf-font-awesome ttf-nerd-fonts-symbols iotop tree intel-undervolt \
         capitaine-cursors wireguard-tools lib32-nvidia-utils pipewire pipewire-pulse stress \
-        s-tui bpytop zenity autotiling intel-gpu-tools nmap iperf3 nano numlockx dunst \
+        s-tui bpytop zenity intel-gpu-tools nmap iperf3 nano numlockx dunst \
         ttf-fira-sans ttf-fira-mono ttf-fira-code otf-fira-mono network-manager-applet \
-        blueman flameshot numlockx os-prober man-db pkgfile xclip
+        blueman flameshot numlockx os-prober man-db pkgfile xclip xorg-xinit acpid \
+        acpi_call-dkms acpi glu rofi udiskie
 
     echo "installing AUR helper"
-    git clone https://aur.archlinux.org/yay.git "$GIT_PATH"
-    cd "$GIT_PATH"yay || exit 1
+    git clone https://aur.archlinux.org/yay.git "$GIT_PATH/yay"
+    cd "$GIT_PATH/yay" || exit 1
     makepkg -si
     cd "$SOURCE_PATH" || exit 1
     sleep 2
@@ -62,7 +63,7 @@ system_install() {
     yay -S --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --noremovemake polybar \
         polybar-spotify-module optimus-manager-git plymouth-git gruvbox-material-icon-theme-git \
         gruvbox-material-gtk-theme-git gruvbox-dark-icons-gtk gruvbox-dark-gtk mangohud gamemode \
-        cpupower-gui i3exit picom-jonaburg-git otf-nerd-fonts-fira-mono goverlay blesh
+        cpupower-gui i3exit picom-jonaburg-git otf-nerd-fonts-fira-mono goverlay blesh autotiling
 }
 
 #
@@ -73,6 +74,7 @@ app_install() {
         kdeconnect gimp transmission-remote-gtk chromium evolution neofetch \
         syncthing shellcheck ripgrep telegram-desktop gnome-disk-utility  \
         filezilla mpv bitwarden gnome-calculator redshift inkscape jq speedtest-cli \
+        nextcloud-client kitty 
 
 
     yay -S --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --noremovemake \
